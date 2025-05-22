@@ -1,0 +1,75 @@
+/* Equipment Calculator Styles */
+#equipmentTable {
+    margin: 1.5rem 0;
+    border-collapse: separate;
+    border-spacing: 0 0.75rem;
+}
+
+#equipmentTable thead th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    padding: 1rem;
+    font-weight: 600;
+}
+
+#equipmentTable tbody tr {
+    background-color: white;
+    transition: all 0.2s ease;
+}
+
+#equipmentTable tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+#equipmentTable td {
+    padding: 0.75rem;
+    vertical-align: middle;
+    border-top: 1px solid #dee2e6;
+}
+
+.equipment-row input {
+    width: 100%;
+    min-width: 120px;
+}
+
+.remove-btn {
+    transition: all 0.2s ease;
+}
+
+.remove-btn:hover {
+    transform: scale(1.05);
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+    #equipmentTable {
+        display: block;
+        overflow-x: auto;
+    }
+    
+    #equipmentTable td:last-child {
+        min-width: 90px;
+    }
+}
+
+/* Form Controls */
+.form-control:focus {
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.15);
+    border-color: #86b7fe;
+}
+
+/* Button Grouping */
+.btn-group-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+/* Total Calculation Display */
+.total-calculation {
+    padding: 1rem;
+    background-color: #e9f5ff;
+    border-radius: 0.5rem;
+    margin-top: 1.5rem;
+    font-weight: 500;
+}

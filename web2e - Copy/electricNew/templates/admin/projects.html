@@ -1,0 +1,86 @@
+{% extends "base.html" %}
+
+{% block title %}Project Management{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    <div class="admin-header">
+        <h1>Project Management</h1>
+        <div class="admin-actions">
+            <button onclick="window.location.href='{{ url_for('admin_add_project') }}'" class="btn-add">
+                <i class="fas fa-plus"></i> Add New Project
+            </button>
+        </div>
+    </div>
+
+    <div class="projects-categories">
+        {% set project_names = {
+            'project1': 'Residential Wiring',
+            'project2': 'Lighting Installation',
+            'project3': 'Solar Systems',
+            'project4': 'Panel Upgrades',
+            'project5': 'Maintenance Services',
+            'project6': 'Industrial Systems'
+        } %}
+
+        {% for project_key, project_name in project_names.items() %}
+        <div class="project-category">
+            <div class="category-header">
+                <h2>{{ project_name }}</h2>
+                <span class="project-count">{{ projects_data[project_key]|length }} projects</span>
+            </div>
+            <div class="projects-list">
+                {% if projects_data[project_key] %}
+                    {% for project in projects_data[project_key] %}
+                        <div class="project-card" data-project-id="{{ project.id }}" data-project-type="{{ project_key }}">
+                            <div class="project-header">
+                                <h3>Installation #{{ project.installation_number }}</h3>
+                                <span class="project-date">{{ project.created_at }}</span>
+                            </div>
+                            <div class="project-details">
+                                <p><strong>Client:</strong> {{ project.client_name }}</p>
+                                <p><strong>Location:</strong> 
+                                    {% if project.location is mapping %}
+                                        {{ project.location.specific }}, {{ project.location.city }}, {{ project.location.country }}
+                                        <br>
+                                        <span class="completion-year">Completion Year: {{ project.location.completion_year }}</span>
+                                    {% else %}
+                                        {{ project.location }}
+                                    {% endif %}
+                                </p>
+                                <p><strong>Duration:</strong> {{ project.duration }} days</p>
+                                <p><strong>Team Size:</strong> {{ project.team_size }}</p>
+                            </div>
+                            <div class="project-actions">
+                                <a href="{{ url_for('admin_edit_project', project_key=project_key, project_id=project.id) }}" 
+                                   class="btn-edit">Edit</a>
+                                <button class="btn-delete" onclick="deleteProject('{{ project_key }}', {{ project.id }})">
+                                    Delete
+                                </button>
+                                <a href="{{ url_for(project_key) }}" class="btn-view">View</a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% else %}
+                    <div class="empty-state">
+                        <p>No {{ project_name }} projects yet.</p>
+                        <button onclick="window.location.href='{{ url_for('admin_add_project') }}?type={{ project_key }}'" 
+                                class="btn-add-small">
+                            Add {{ project_name }} Project
+                        </button>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

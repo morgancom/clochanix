@@ -1,0 +1,121 @@
+{% extends "base.html" %}
+
+{% block title %}CLOCHANIX ELECTRIC SERVICES{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/servicesstyle.css') }}">
+<style>
+    body {
+        background-size: contain;
+        background-size: cover;
+        background-position: center;
+    }
+    header {
+        background-size: contain;
+        background-image: url('static/images/A1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Our Services</h1>
+        <p>Explore our comprehensive range of electrical services</p>
+    </div>
+</section>
+
+<section class="services-grid">
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/ElectricalWiring1.jpg') }}" alt="Electrical Wiring" class="service-image" data-image="{{ url_for('static', filename='images/ElectricalWiring1.jpg') }}">
+            <img src="{{ url_for('static', filename='images/ElectricalWiring2.jpg') }}" alt="Electrical Wiring" class="service-image" data-image="{{ url_for('static', filename='images/ElectricalWiring2.jpg') }}">
+            <img src="{{ url_for('static', filename='images/ElectricalWiring3.jpg') }}" alt="Electrical Wiring" class="service-image" data-image="{{ url_for('static', filename='images/ElectricalWiring3.jpg') }}">
+        </div>
+        <h2>Electrical Wiring</h2>
+        <p>We provide comprehensive electrical wiring services for residential, commercial, and industrial properties. From new construction wiring to rewiring existing structures, we ensure safe and reliable electrical systems.</p>
+        <a href="{{ url_for('project1') }}"  class="read-more">Read More</a>
+    </div>
+
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/LightingInstallation1.jpg') }}" alt="Lighting Installation" class="service-image" data-image="{{ url_for('static', filename='images/LightingInstallation1.jpg') }}">
+            <img src="{{ url_for('static', filename='images/LightingInstallation2.jpg') }}" alt="Lighting Installation" class="service-image" data-image="{{ url_for('static', filename='images/lightingInstallation2.jpg') }}">
+            <img src="{{ url_for('static', filename='images/LightingInstallation3.jpg') }}" alt="Lighting Installation" class="service-image" data-image="{{ url_for('static', filename='images/lightingInstallation3.jpg') }}">
+        </div>
+        <h2>Lighting Installation</h2>
+        <p>From recessed lighting to outdoor landscape lighting, we install a variety of lighting fixtures to enhance the ambiance and functionality of your space. We also offer energy-efficient LED lighting solutions.</p>
+        <a href="{{ url_for('project2') }}"  class="read-more">Read More</a>
+    </div>
+
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/solarpanelinstallation.jpg') }}" alt="Solar Panel Installation" class="service-image" data-image="{{ url_for('static', filename='images/solarpanelinstallation.jpg') }}">
+            <img src="{{ url_for('static', filename='images/solar6.jpg') }}" alt="Solar Panel Installation" class="service-image" data-image="{{ url_for('static', filename='images/solar6.jpg') }}">
+            <img src="{{ url_for('static', filename='images/solar3.jpg') }}" alt="Solar Panel Installation" class="service-image" data-image="{{ url_for('static', filename='images/solar3.jpg') }}">
+        </div>
+        <h2>Solar Panel Installation</h2>
+        <p>We offer electrical solar panel installation to power your home during power outages, ensuring your home or business has the necessary power capacity at all times.</p>
+        <a href="{{ url_for('project3') }}"  class="read-more">Read More</a>
+    </div>
+
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/inverter.jpg') }}" alt="Panel Upgrades" class="service-image" data-image="{{ url_for('static', filename='images/inverter.jpg') }}">
+            <img src="{{ url_for('static', filename='images/SolarPanelUpgrades.jpg') }}" alt="Panel Upgrades" class="service-image" data-image="{{ url_for('static', filename='images/SolarPanelUpgrades.jpg') }}">
+            <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Panel Upgrades" class="service-image" data-image="{{ url_for('static', filename='images/2.jpg') }}">
+        </div>
+        <h2>Panel Upgrades</h2>
+        <p>Is your electrical panel outdated or insufficient? We offer panel upgrades and replacements to ensure your home or business has the necessary power capacity and safety features.</p>
+        <a href="{{ url_for('project4') }}"  class="read-more">Read More</a>
+    </div>
+
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/LightingMaintenance1.jpg') }}" alt="Lighting Maintenance" class="service-image" data-image="{{ url_for('static', filename='images/LightingMaintenance1.jpg') }}">
+            <img src="{{ url_for('static', filename='images/ElectricalMaintenance&Repair.jpg') }}" alt="Lighting Maintenance" class="service-image" data-image="{{ url_for('static', filename='images/ElectricalMaintenance&Repair.jpg') }}">
+            <img src="{{ url_for('static', filename='images/LightingMaintenance2.jpg') }}" alt="Lighting Maintenance" class="service-image" data-image="{{ url_for('static', filename='images/LightingMaintenance2.jpg') }}">
+        </div>
+        <h2>Lighting Maintenance</h2>
+        <p>We provide maintenance for various lighting systems, ensuring they function efficiently and safely. We also offer energy-efficient LED lighting solutions.</p>
+        <a href="{{ url_for('project5') }}"  class="read-more">Read More</a>
+    </div>
+
+    <div class="service-card">
+        <div class="service-images">
+            <img src="{{ url_for('static', filename='images/IndustrialWiring1.jpg') }}" alt="Industrial Wiring" class="service-image" data-image="{{ url_for('static', filename='images/IndustrialWiring1.jpg') }}">
+            <img src="{{ url_for('static', filename='images/industrialinstallation.jpg') }}" alt="Industrial Wiring" class="service-image" data-image="{{ url_for('static', filename='images/industrialinstallation.jpg') }}">
+            <img src="{{ url_for('static', filename='images/Electric2.jpg') }}" alt="Industrial Wiring" class="service-image" data-image="{{ url_for('static', filename='images/Electric2.jpg') }}">
+        </div>
+        <h2>Industrial Wiring</h2>
+        <p>We provide advanced industrial wiring solutions, ensuring robustness and safety for complex industrial electrical systems.</p>
+        <a href="{{ url_for('project6') }}"  class="read-more">Read More</a>
+    </div>
+</section>
+
+<div id="image-modal" class="modal">
+    <span class="modal-close-btn">&times;</span>
+    <img class="modal-content" id="modal-image">
+    <div class="caption" id="image-caption"></div>
+    <div class="modal-nav">
+        <button class="modal-nav-btn modal-prev">&lt;</button>
+        <button class="modal-nav-btn modal-next">&gt;</button>
+    </div>
+</div>
+
+<!-- Add this just before the closing </body> tag -->
+<div id="image-modal" class="modal">
+    <span class="modal-close-btn">&times;</span>
+    <img class="modal-content" id="modal-image" src="" alt="Modal Image">
+    <div class="modal-counter" id="modal-counter"></div>
+    <button class="modal-nav-btn modal-prev" id="modal-prev">&lt;</button>
+    <button class="modal-nav-btn modal-next" id="modal-next">&gt;</button>
+</div>
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/services.js') }}"></script>
+{% endblock %}

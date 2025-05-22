@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block admin_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block content %}
+<div class="admin-container">
+    {% block admin_content %}{% endblock %}
+</div>
+{% endblock %}
+
+{% block admin_js %}{% endblock %}

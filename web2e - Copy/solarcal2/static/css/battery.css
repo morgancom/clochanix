@@ -1,0 +1,65 @@
+/* General form styling */
+.card {
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15);
+    border-radius: 1rem;
+    margin-bottom: 2rem;
+}
+
+.card-header {
+    padding: 1.5rem;
+    border-bottom: 2px solid #e9ecef;
+    border-radius: 1rem 1rem 0 0 !important;
+}
+
+.form-select-lg {
+    font-size: 1.1rem;
+    padding: 0.75rem 1.5rem;
+}
+
+.btn-lg {
+    padding: 0.75rem 1.5rem;
+    font-size: 1.1rem;
+}
+
+/* Location summary styling */
+.location-summary {
+    background-color: #f8f9fa;
+    border-radius: 0.75rem;
+    padding: 1.5rem;
+    border: 1px solid #dee2e6;
+}
+
+.location-summary h6 {
+    color: #2c3e50;
+    font-weight: 600;
+    margin-bottom: 1rem;
+}
+
+.location-summary p {
+    margin-bottom: 0.5rem;
+    color: #4a4a4a;
+}
+
+/* Voltage info bullets */
+.voltage-info p {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+.voltage-info p::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #6c757d;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .card-header h5 {
+        font-size: 1.25rem;
+    }
+    
+    .form-select-lg {
+        font-size: 1rem;
+    }
+}

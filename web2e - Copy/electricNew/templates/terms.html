@@ -1,0 +1,131 @@
+{% extends "base.html" %}
+
+{% block title %}Terms and Services - Clochanix Electric{% endblock %}
+
+{% block content %}
+<div class="terms-container">
+    <h1>Terms and Services</h1>
+    
+    <div class="terms-header">
+        <p class="terms-intro">Last Updated: {{ current_date }}</p>
+        <div class="terms-highlight">
+            <i class="fas fa-shield-alt"></i>
+            <p>Our commitment to quality, safety, and professional service</p>
+        </div>
+    </div>
+
+    <section class="terms-section">
+        <h2>1. Service Agreement</h2>
+        <p>By engaging our services, you agree to the following terms and conditions:</p>
+        <ul>
+            <li>All electrical work will be performed by licensed and qualified electricians</li>
+            <li>Services will be provided in accordance with local electrical codes and regulations</li>
+            <li>Safety protocols and standards will be strictly followed</li>
+            <li>Service quotes are valid for 30 days from issuance</li>
+        </ul>
+    </section>
+
+    <section class="terms-section payment-terms">
+        <h2>2. Payment Terms</h2>
+        <ul>
+            <li>50% deposit required for projects over 500,000 XAF</li>
+            <li>Final payment due upon completion</li>
+            <li>Accepted payments: Cash, Mobile Money, Bank Transfer</li>
+            <li>All prices in XAF (Central African CFA franc)</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>3. Warranty and Guarantees</h2>
+        <ul>
+            <li>Workmanship guaranteed for 12 months</li>
+            <li>Manufacturer warranties apply to all installed equipment</li>
+            <li>Regular maintenance required to maintain warranty validity</li>
+            <li>Warranty void if unauthorized modifications are made</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>4. Service Scheduling</h2>
+        <ul>
+            <li>24-hour notice required for appointment cancellations</li>
+            <li>Emergency services available 24/7</li>
+            <li>Service hours: Monday-Saturday, 8:00 AM - 6:00 PM</li>
+            <li>After-hours services subject to additional charges</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>5. Customer Responsibilities</h2>
+        <ul>
+            <li>Provide accurate service location and access</li>
+            <li>Inform of any existing electrical issues</li>
+            <li>Ensure clear workspace around service areas</li>
+            <li>Notify of any special site requirements</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>6. Safety and Compliance</h2>
+        <ul>
+            <li>All work complies with Cameroon electrical standards</li>
+            <li>Safety certificates provided for major installations</li>
+            <li>Right to refuse unsafe work conditions</li>
+            <li>Adherence to local building codes and permits</li>
+        </ul>
+    </section>
+
+    <section class="terms-summary">
+        <h2>Quick Reference Guide</h2>
+        <div class="summary-grid">
+            <div class="summary-card">
+                <i class="fas fa-tools"></i>
+                <h3>Services</h3>
+                <p>Professional electrical work by licensed experts</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-money-bill-wave"></i>
+                <h3>Payment</h3>
+                <p>Flexible payment options with clear terms</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-check-circle"></i>
+                <h3>Warranty</h3>
+                <p>12-month workmanship guarantee</p>
+            </div>
+            <div class="summary-card">
+                <i class="fas fa-clock"></i>
+                <h3>Availability</h3>
+                <p>24/7 emergency services available</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="emergency-contact">
+        <div class="emergency-banner">
+            <i class="fas fa-exclamation-circle"></i>
+            <h3>24/7 Emergency Service</h3>
+            <p>For urgent electrical issues, call: <a href="tel:+237680547526">+237 680-547-526</a></p>
+        </div>
+    </section>
+
+    <section class="terms-section contact-info">
+        <h2>Contact Information</h2>
+        <p>For questions about these terms or our services:</p>
+        <ul>
+            <li>Phone: +237 680-547-526</li>
+            <li>Email: clovissamba191@gmail.com</li>
+            <li>Address: Limbe, Cameroon</li>
+        </ul>
+    </section>
+
+    <div class="terms-footer">
+        <p>Last updated: {{ current_year }}</p>
+        <p>These terms and conditions are subject to change without notice.</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/terms.css') }}">
+{% endblock %}

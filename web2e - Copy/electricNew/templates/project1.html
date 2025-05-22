@@ -1,0 +1,445 @@
+{% extends "base.html" %}
+
+{% block title %}Electrical Wiring Projects - Clochanix{% endblock %}
+
+{% block extra_css %}
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projectss.css') }}">
+{% endblock %}
+
+{% block content %}
+<div class="project-container">
+    <div class="project-header wiring-header">
+        <h1>Electrical Wiring Projects</h1>
+        <p class="project-subtitle">Professional Residential & Commercial Wiring Solutions</p>
+    </div>
+
+    <button id="back-button" class="back-btn">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="mr-2">
+            <path d="M19 12H5"></path>
+            <polyline points="12 19 5 12 12 5"></polyline>
+        </svg>
+        Back
+    </button>
+
+    {% if projects %}
+        {% for project in projects %}
+        <section class="project-details">
+            <h2>Residential Wiring Installation {{ project.installation_number }}</h2>
+            <p>{{ project.description }}</p>
+            
+            <div class="project-specs">
+                <div class="specs-item">
+                    <h3>Project Overview</h3>
+                    <ul>
+                        <li><strong>Client:</strong> {{ project.client_name }}</li>
+                        <li><strong>Type:</strong> Residential Electrical</li>
+                        <li><strong>Property Size:</strong> {{ project.property_size }} sq meters</li>
+                        <li><strong>Duration:</strong> {{ project.duration }} days</li>
+                        <li><strong>Team:</strong> {{ project.team_size }} Certified Electricians</li>
+                    </ul>
+                </div>
+
+                <div class="specs-item">
+                    <h3>Technical Scope</h3>
+                    <ul>
+                        {% for scope_item in project.scope %}
+                        <li>{{ scope_item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+
+                <div class="specs-item">
+                    <h3>Equipment Used</h3>
+                    <ul>
+                        {% for equipment_item in project.equipment %}
+                        <li>{{ equipment_item }}</li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section class="image-gallery">
+            {% for image in project.media.images %}
+            <img src="{{ url_for('static', filename='images/projects/images/' + image) }}" 
+                 alt="Project Image" 
+                 data-fullsize="{{ url_for('static', filename='images/projects/images/' + image) }}">
+            {% endfor %}
+        </section>
+
+        {% if project.media.videos %}
+        <section>
+            {% for video in project.media.videos %}
+            <div class="video-container">
+                <video width="640" height="360" controls>
+                    <source src="{{ url_for('static', filename='images/projects/videos/' + video) }}" type="video/mp4">
+                    Your browser does not support the video tag.
+                </video>
+            </div>
+            {% endfor %}
+        </section>
+        {% endif %}
+        <section class="project-location">
+            <h2>Project Location</h2>
+            <p>The project was carried out in <strong>{{ project.location.city }}, {{ project.location.country }}</strong>, located in {{ project.location.specific }}.</p>
+            <p>The project was completed in <strong>{{ project.location.completion_year }}</strong>.</p>     
+        </section>
+        {% endfor %}
+    {% endif %}
+    <br><br>
+    <section class="project-details">
+        <h2>Residential Wiring Installation 4</h2>
+        <p>Comprehensive electrical wiring project including conduit installation, circuit planning, and safety implementations for residential properties.</p>
+        
+        <div class="project-specs">
+            <div class="specs-item">
+                <h3>Project Overview</h3>
+                <ul>
+                    <li><strong>Client:</strong> MR. Fidelis</li>
+                    <li><strong>Type:</strong> Residential Electrical</li>
+                    <li><strong>Property Size:</strong> 25 sq meters</li>
+                    <li><strong>Duration:</strong> 5 days</li>
+                    <li><strong>Team:</strong> 3 Certified Electricians</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Technical Scope</h3>
+                <ul>
+                    <li>Complete house wiring</li>
+                    <li>Circuit breaker installation</li>
+                    <li>Conduit pipe fitting</li>
+                    <li>Junction box placement</li>
+                    <li>Safety system integration</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Equipment Used</h3>
+                <ul>
+                    <li>Professional wiring tools</li>
+                    <li>Electrical testing equipment</li>
+                    <li>Conduit bending machines</li>
+                    <li>Safety gear and meters</li>
+                    <li>Cable routing systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-gallery">
+        <img src="{{ url_for('static', filename='images/pipeW4n.jpg') }}" alt="Project Image 1" data-fullsize="{{ url_for('static', filename='images/pipeW4n.jpg') }}">
+        <img src="{{ url_for('static', filename='images/earthW1c.jpg') }}" alt="Project Image 2" data-fullsize="{{ url_for('static', filename='images/earthW1c.jpg') }}">
+        <img src="{{ url_for('static', filename='images/pipeW6c.jpg') }}" alt="Project Image 3" data-fullsize="{{ url_for('static', filename='images/pipeW6c.jpg') }}">
+        <img src="{{ url_for('static', filename='images/buildingW.jpg') }}" alt="Project Image 4" data-fullsize="{{ url_for('static', filename='images/buildingW.jpg') }}">
+    </section>
+    <section>
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW16nv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW16nv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW14v.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW14v.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/earth1cv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/earth1cv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW13nv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW13nv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>  
+   
+    </section>
+    <section class="project-location">
+        <h2>Project Location</h2>
+        <p>The project was carried out in <strong>Limbe, Cameroon</strong>, located in BATOKE.</p>
+        <p>The project was completed in <strong>2025</strong>.</p>
+    </section>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <img src="" alt="Full Size Image">
+    <span id="lightbox-close">&times;</span>
+    <span id="lightbox-prev">&#10094;</span>
+    <span id="lightbox-next">&#10095;</span>
+</div>
+
+
+    <section class="project-details">
+        <h2>Residential Wiring Installation 3</h2>
+        <p>Comprehensive electrical wiring project including conduit installation, circuit planning, and safety implementations for residential properties.</p>
+        
+        <div class="project-specs">
+            <div class="specs-item">
+                <h3>Project Overview</h3>
+                <ul>
+                    <li><strong>Client:</strong> MRs. EMEJI PRUDENCIA</li>
+                    <li><strong>Type:</strong> Residential Electrical</li>
+                    <li><strong>Property Size:</strong> 250 sq meters</li>
+                    <li><strong>Duration:</strong> 1 week</li>
+                    <li><strong>Team:</strong> 4 Certified Electricians</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Technical Scope</h3>
+                <ul>
+                    <li>Complete house wiring</li>
+                    <li>Circuit breaker installation</li>
+                    <li>Conduit pipe fitting</li>
+                    <li>Junction box placement</li>
+                    <li>Safety system integration</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Equipment Used</h3>
+                <ul>
+                    <li>Professional wiring tools</li>
+                    <li>Electrical testing equipment</li>
+                    <li>Conduit bending machines</li>
+                    <li>Safety gear and meters</li>
+                    <li>Cable routing systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-gallery">
+        <img src="{{ url_for('static', filename='images/pipeW4n.jpg') }}" alt="Project Image 1" data-fullsize="{{ url_for('static', filename='images/pipeW4n.jpg') }}">
+        <img src="{{ url_for('static', filename='images/earthW1c.jpg') }}" alt="Project Image 2" data-fullsize="{{ url_for('static', filename='images/earthW1c.jpg') }}">
+        <img src="{{ url_for('static', filename='images/pipeW6c.jpg') }}" alt="Project Image 3" data-fullsize="{{ url_for('static', filename='images/pipeW6c.jpg') }}">
+        <img src="{{ url_for('static', filename='images/buildingW.jpg') }}" alt="Project Image 4" data-fullsize="{{ url_for('static', filename='images/buildingW.jpg') }}">
+    </section>
+    <section>
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW16nv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW16nv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW14v.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW14v.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/earth1cv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/earth1cv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>   
+
+        <div class="video-container">
+            <video width="640" height="360" controls>
+                <source src="{{ url_for('static', filename='videos/pipeW13nv.mp4') }}" type="video/mp4">
+                <source src="{{ url_for('static', filename='videos/pipeW13nv.webm') }}" type="video/webm">
+                Your browser does not support the video tag.
+            </video>
+        </div>  
+   
+    </section>
+    <section class="project-location">
+        <h2>Project Location</h2>
+        <p>The project was carried out in <strong>Limbe, Cameroon</strong>, located in WOVIA close to the sea.</p>
+        <p>The project was completed in <strong>2024</strong>.</p>
+    </section>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <img src="" alt="Full Size Image">
+    <span id="lightbox-close">&times;</span>
+    <span id="lightbox-prev">&#10094;</span>
+    <span id="lightbox-next">&#10095;</span>
+</div>
+<br>
+<section class="project-details">
+    <h2>Residential Wiring Installation 2</h2>
+    <p>Comprehensive electrical wiring project including conduit installation, circuit planning, and safety implementations for residential properties.</p>
+    
+    <div class="project-specs">
+        <div class="specs-item">
+            <h3>Project Overview</h3>
+            <ul>
+                <li><strong>Client:</strong> MR. GEORGE</li>
+                <li><strong>Type:</strong> Residential Electrical</li>
+                <li><strong>Property Size:</strong> 25 sq meters</li>
+                <li><strong>Duration:</strong> 3 days</li>
+                <li><strong>Team:</strong> 4 Certified Electricians</li>
+            </ul>
+        </div>
+
+        <div class="specs-item">
+            <h3>Technical Scope</h3>
+            <ul>
+                <li>Complete house wiring</li>
+                <li>Circuit breaker installation</li>
+                <li>Conduit pipe fitting</li>
+                <li>Junction box placement</li>
+                <li>Safety system integration</li>
+            </ul>
+        </div>
+
+        <div class="specs-item">
+            <h3>Equipment Used</h3>
+            <ul>
+                <li>Professional wiring tools</li>
+                <li>Electrical testing equipment</li>
+                <li>Conduit bending machines</li>
+                <li>Safety gear and meters</li>
+                <li>Cable routing systems</li>
+            </ul>
+        </div>
+    </div>
+</section>
+
+<section class="image-gallery">
+    <img src="{{ url_for('static', filename='images/pipeunc1.jpg') }}" alt="Project Image 1" data-fullsize="{{ url_for('static', filename='images/pipeunc1.jpg') }}">
+    <img src="{{ url_for('static', filename='images/pipeunc21.jpg') }}" alt="Project Image 2" data-fullsize="{{ url_for('static', filename='images/pipeunc21.jpg') }}">
+    <img src="{{ url_for('static', filename='images/ElectricalWiring1.jpg') }}" alt="Project Image 3" data-fullsize="{{ url_for('static', filename='images/ElectricalWiring1.jpg') }}">
+    <img src="{{ url_for('static', filename='images/ElectricalWiring4.jpg') }}" alt="Project Image 4" data-fullsize="{{ url_for('static', filename='images/ElectricalWiring4.jpg') }}">
+</section>
+
+<div class="video-container">
+    <video width="640" height="360" controls>
+        <source src="{{ url_for('static', filename='videos/pipeucl4v.mp4') }}" type="video/mp4">
+        <source src="{{ url_for('static', filename='videos/pipeucl4v.webm') }}" type="video/webm">
+        Your browser does not support the video tag.
+    </video>
+</div>    
+
+<div class="video-container">
+    <video poster="{{ url_for('static', filename='images/video-thumbnail.jpg') }}">
+        <source src="{{ url_for('static', filename='videos/your-video.mp4') }}" type="video/mp4">
+        <source src="{{ url_for('static', filename='videos/your-video.webm') }}" type="video/webm">
+        Your browser doesn't support video playback.
+    </video>
+</div>
+
+<section class="project-location">
+    <h2>Project Location</h2>
+    <p>The project was carried out in <strong>Limbe, Cameroon</strong>, located in Batoke poatry.</p>
+    <p>The project was completed in <strong>2024</strong>.</p>
+</section>
+</div>
+
+<div id="lightbox" class="lightbox">
+<img src="pipeclo1" alt="Full Size Image">
+<span id="lightbox-close">&times;</span>
+<span id="lightbox-prev">&#10094;</span>
+<span id="lightbox-next">&#10095;</span>
+</div><br>
+<section class="project-details">
+        <h2>Residential Wiring Installation 1</h2>
+        <p>Comprehensive electrical wiring project including conduit installation, circuit planning, and safety implementations for residential properties.</p>
+        
+        <div class="project-specs">
+            <div class="specs-item">
+                <h3>Project Overview</h3>
+                <ul>
+                    <li><strong>Client:</strong> MR. CLOVIS</li>
+                    <li><strong>Type:</strong> Residential Electrical</li>
+                    <li><strong>Property Size:</strong> 50 sq meters</li>
+                    <li><strong>Duration:</strong> 1 week</li>
+                    <li><strong>Team:</strong> 4 Certified Electricians</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Technical Scope</h3>
+                <ul>
+                    <li>Complete house wiring</li>
+                    <li>Circuit breaker installation</li>
+                    <li>Conduit pipe fitting</li>
+                    <li>Junction box placement</li>
+                    <li>Safety system integration</li>
+                </ul>
+            </div>
+
+            <div class="specs-item">
+                <h3>Equipment Used</h3>
+                <ul>
+                    <li>Professional wiring tools</li>
+                    <li>Electrical testing equipment</li>
+                    <li>Conduit bending machines</li>
+                    <li>Safety gear and meters</li>
+                    <li>Cable routing systems</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section class="image-gallery">
+        <img src="{{ url_for('static', filename='images/pipeclo.jpg') }}" alt="Project Image 1" data-fullsize="{{ url_for('static', filename='images/pipeclo.jpg') }}">
+        <img src="{{ url_for('static', filename='images/pipeclo1.jpg') }}" alt="Project Image 2" data-fullsize="{{ url_for('static', filename='images/pipeclo1.jpg') }}">
+        <img src="{{ url_for('static', filename='images/electricawiring1.jpg') }}" alt="Project Image 3" data-fullsize="{{ url_for('static', filename='images/electricawiring1.jpg') }}">
+        <img src="{{ url_for('static', filename='images/ElectricalWiring3.jpg') }}" alt="Project Image 4" data-fullsize="{{ url_for('static', filename='images/ElectricalWiring3.jpg') }}">
+    </section>
+
+    <div class="video-container">
+        <video width="640" height="360" controls>
+            <source src="{{ url_for('static', filename='videos/pipeclo2cv.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='videos/pipeclo2cv.webm') }}" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div>   
+
+    <div class="video-container">
+        <video width="640" height="360" controls>
+            <source src="{{ url_for('static', filename='videos/pipeclo1nv.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='videos/pipeclo1nv.webm') }}" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div> 
+    <div class="video-container">
+        <video width="640" height="360" controls>
+            <source src="{{ url_for('static', filename='videos/Electricalwiringv1.mp4') }}" type="video/mp4">
+            <source src="{{ url_for('static', filename='videos/Electricalwiringv1.webm') }}" type="video/webm">
+            Your browser does not support the video tag.
+        </video>
+    </div> 
+    
+    <section class="project-location">
+        <h2>Project Location</h2>
+        <p>The project was carried out in <strong>Limbe, Cameroon</strong>, located in BATOKE.</p>
+        <p>The project was completed in <strong>2024</strong>.</p>
+    </section>
+</div>
+
+<div id="lightbox" class="lightbox">
+    <img src="" alt="Full Size Image">
+    <span id="lightbox-close">&times;</span>
+    <span id="lightbox-prev">&#10094;</span>
+    <span id="lightbox-next">&#10095;</span>
+</div>
+
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/projectss.js') }}"></script>
+<script src="{{ url_for('static', filename='js/admin.js') }}"></script>
+{% endblock %}

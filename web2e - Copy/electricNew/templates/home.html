@@ -1,0 +1,255 @@
+{% extends "base.html" %}
+
+{% block title %}Clochanix Electrical Services{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/homestyle.css') }}">
+<style>
+    body {
+        background-image: url("{{ url_for('static', filename='images/lamp.jpg') }}");
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+    
+    header {
+        background-image: url("{{ url_for('static', filename='images/A1.jpg') }}");
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="hero-content">
+        <h1 class="animate__animated animate__fadeInDown">Reliable Electrical Solutions</h1>
+        <p class="animate__animated animate__fadeInUp">Powering Your World with Expertise and Innovation</p>
+        <a href="{{ url_for('contact') }}" class="cta-button animate__animated animate__flash animate__infinite">Contact Us</a>
+    </div>
+    <div class="hero-image">
+        <img src="{{ url_for('static', filename='images/logos1.png') }}" alt="Electrician">
+    </div>
+</section>
+
+<section class="featured-services">
+    <h2>Our Featured Services</h2>
+    <div class="service-grid animate-on-scroll">
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/electricalwiring.jpg') }}" alt="Electrical Wiring">
+            <h3>Electrical Wiring</h3>
+            <p>Expert wiring for homes and businesses.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/lightinginstallation.jpg') }}" alt="Lighting Installation">
+            <h3>Lighting Installation</h3>
+            <p>Enhance your space with modern lighting.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/solarpanelinstallation.jpg') }}" alt="Solar Panel Installation">
+            <h3>Solar Panel Installation</h3>
+            <p>For efficient power supply when there is no power grid.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/industrialinstallation.jpg') }}" alt="Industrial Installation">
+            <h3>Industrial Installation</h3>
+            <p>Installation of water pumps and grinding mills.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/ElectricalMaintenance&Repair.jpg') }}" alt="Electrical Maintenance and Repair">
+            <h3>Electrical Maintenance & Repair</h3>
+            <p>Proactive maintenance and swift repairs to ensure your electrical systems run safely and efficiently.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+        <div class="service-item">
+            <img src="{{ url_for('static', filename='images/SolarPanelUpgrades.jpg') }}" alt="Solar Panel Upgrade">
+            <h3>Solar Panel Upgrades</h3>
+            <p>Enhance your solar system's efficiency with our expert upgrade services.</p>
+            <a href="{{ url_for('services') }}" class="learn-more">Learn More</a>
+        </div>
+    </div>
+</section>
+
+<section class="choose-us">
+    <h2>Why Choose Us for Your Electrical Service?</h2>
+    <div class="reasons animate-on-scroll">
+        <section>
+            <h3>Reliability and Expertise</h3>
+                <li><strong>Transparent Pricing:</strong> We provide upfront and honest pricing with no hidden fees.</li>
+                <li><strong>Quality Materials:</strong> We use only high-quality materials to ensure long-lasting and reliable electrical systems.</li>
+            </ul>
+        </section>
+        <section>
+            <h3>Customer Satisfaction Guaranteed</h3>
+            <p>We are committed to providing exceptional customer service and ensuring your complete satisfaction:</p>
+            <ul>
+                <li><strong>Dedicated Support:</strong> We are here to answer your questions and address your concerns every step of the way.</li>
+                <li><strong>Personalized Solutions:</strong> We tailor our services to meet your specific needs and preferences.</li>
+                <li><strong>Warranty on Workmanship:</strong> We stand behind our work and offer warranties on our services.</li>
+                <li><strong>Positive Reviews:</strong> Our satisfied customers are a testament to our commitment to excellence.</li>
+            </ul>
+        </section>
+    </div>
+</section>
+
+<section class="testimonials">
+    <h2>What Our Clients Say</h2>
+    <div class="testimonial animate-on-scroll">
+        <p>"Excellent service! The electrician was professional and efficient." - pa chris</p>
+    </div>
+    <div class="testimonial">
+        <p>"I'm so happy with the work. Highly recommend this company!" - Mr Adru</p>
+    </div>
+</section>
+
+
+
+{% include 'includes/newsletter.html' %}
+
+<section class="service-request" id="service-request-section">
+    <h2>Request a Service</h2>
+    <div class="form-container animate-on-scroll">
+        <form id="service-request-form" action="{{ url_for('submit_service_request') }}" method="POST" class="needs-validation">
+            <div class="form-group">
+                <label for="full-name">Name*</label>
+                <input type="text" id="full-name" name="name" required placeholder="Your Full Name">
+            </div>
+            
+            <div class="form-group">
+                <label for="email">Email Address*</label>
+                <input type="email" id="email" name="email" required placeholder="your.email@gmail.com">
+            </div>
+            
+            <div class="form-group">
+                <label for="phone">Phone Number*</label>
+                <input type="tel" id="phone" name="phone" required placeholder="+237 XXX XXX XXX">
+            </div>
+            
+            <div class="form-group">
+                <label for="address">Service Address*</label>
+                <input type="text" id="address" name="address" required placeholder="Your Address">
+            </div>
+            
+            <div class="form-group">
+                <label for="service-type">Service Needed*</label>
+                <select id="service-type" name="service" required>
+                    <option value="">Select a Service</option>
+                    <option value="electrical-wiring">Electrical Wiring</option>
+                    <option value="lighting-installation">Lighting Installation</option>
+                    <option value="solar-panel">Solar Panel Installation</option>
+                    <option value="industrial-installation">Industrial Installation</option>
+                    <option value="electrical-maintenance">Electrical Maintenance & Repair</option>
+                    <option value="solar-upgrade">Solar Panel Upgrades</option>
+                    <option value="other">Other (Specify Below)</option>
+                </select>
+            </div>
+            
+            <div class="form-group" id="other-service-container" style="display: none;">
+                <label for="other-service">Please Specify Service</label>
+                <input type="text" id="other-service" name="other_service" placeholder="Describe the service you need">
+            </div>
+            
+            <div class="form-group">
+                <label for="service-date">Preferred Service Date*</label>
+                <input type="date" id="service-date" name="preferred_date" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="service-time">Preferred Time Window</label>
+                <select id="service-time" name="preferred_time">
+                    <option value="morning">Morning (8am - 12pm)</option>
+                    <option value="afternoon">Afternoon (12pm - 4pm)</option>
+                    <option value="evening">Evening (4pm - 7pm)</option>
+                    <option value="flexible">Flexible - Any Time</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="urgency">Urgency Level</label>
+                <div class="radio-group">
+                    <label>
+                        <input type="radio" name="urgency" value="today" required> Today (Emergency service - additional fees may apply)
+                    </label>
+                    <label>
+                        <input type="radio" name="urgency" value="tomorrow"> Tomorrow (Priority service)
+                    </label>
+                    <label>
+                        <input type="radio" name="urgency" value="this-week" checked> This Week (Within 3-5 days)
+                    </label>
+                    <label>
+                        <input type="radio" name="urgency" value="next-week"> Next Week (Within 1-2 weeks)
+                    </label>
+                    <label>
+                        <input type="radio" name="urgency" value="flexible"> Flexible (No specific timeframe)
+                    </label>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="service-details">Project Details*</label>
+                <textarea id="service-details" name="details" required placeholder="Please describe your project in detail, including any specific requirements or concerns..."></textarea>
+            </div>
+            
+            <div class="form-group">
+                <label for="budget">Estimated Budget Range</label>
+                <select id="budget" name="budget">
+                    <option value="not-sure">Not Sure</option>
+                    <option value="under-100">Under XAF 10,000</option>
+                    <option value="100-300">XAF 10,000 - 30,000</option>
+                    <option value="300-500">XAF 30,000 - 50,000</option>
+                    <option value="500-1000">XAF 50,000 - 100,000</option>
+                    <option value="over-1000">Over XAF 100,000</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="reference">How Did You Hear About Us?</label>
+                <select id="reference" name="reference">
+                    <option value="search">Search Engine (Google, Bing, etc.)</option>
+                    <option value="social">Social Media</option>
+                    <option value="recommendation">Friend/Family Recommendation</option>
+                    <option value="previous-client">Previous Client</option>
+                    <option value="advertisement">Advertisement</option>
+                    <option value="other">Other</option>
+                </select>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="newsletter" checked> Subscribe to our newsletter for electrical tips and special offers
+                </label>
+            </div>
+            
+            <div class="form-group checkbox-group">
+                <label>
+                    <input type="checkbox" name="terms" required> I agree to the <a href="{{ url_for('terms') }}" target="_blank">Terms of Service</a> and <a href="{{ url_for('privacy') }}" target="_blank">Privacy Policy</a>*
+                </label>
+            </div>
+            
+            <button type="submit" class="submit-btn">Request Service</button>
+        </form>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/home.js') }}"></script>
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize scroll animations
+    const animatedElements = document.querySelectorAll('.animate-on-scroll');
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('animated');
+            }
+        });
+    });
+
+    animatedElements.forEach(element => observer.observe(element));
+});
+</script>
+{% endblock %}

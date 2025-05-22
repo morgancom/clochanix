@@ -1,0 +1,168 @@
+.calculator-form {
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+.form-control {
+    background: linear-gradient(to right, #ffffff, #f8f9fa);
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: var(--transition-default);
+}
+
+.form-control:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 0.2rem rgba(6, 47, 252, 0.1);
+    transform: translateY(-2px);
+}
+
+.input-group-text {
+    background: var(--background-light);
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-weight: 500;
+}
+
+.form-label {
+    color: var(--primary-color);
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    transition: var(--transition-default);
+}
+
+.form-group:focus-within .form-label {
+    transform: translateY(-2px);
+    color: #1a1f3c;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    position: relative;
+}
+
+/* Floating validation messages */
+.validation-tooltip {
+    position: absolute;
+    right: 0;
+    top: 100%;
+    background: var(--white);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    box-shadow: var(--shadow-sm);
+    font-size: 0.85rem;
+    z-index: 100;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: var(--transition-default);
+}
+
+.validation-tooltip.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.form-control.is-valid ~ .validation-tooltip.valid,
+.form-control.is-invalid ~ .validation-tooltip.invalid {
+    opacity: 1;
+    right: 0;
+}
+
+/* Custom number input styling */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* Animated submit button */
+.btn-calculate {
+    background: linear-gradient(135deg, #062ffc 0%, #1a1f3c 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 10px;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.btn-calculate:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(6, 47, 252, 0.2);
+}
+
+.btn-calculate::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.btn-calculate:active::after {
+    width: 200px;
+    height: 200px;
+}
+
+.calculator-container {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+}
+
+/* Results Styling */
+.result-item {
+    background: var(--white);
+    padding: 1rem;
+    border-radius: 10px;
+    margin-bottom: 1rem;
+    transition: var(--transition-default);
+}
+
+.result-item:hover {
+    transform: translateX(5px);
+    box-shadow: var(--shadow-sm);
+}
+
+.total-amount {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+/* Estimate Preview */
+.estimate-preview {
+    background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+    color: var(--white);
+    padding: 1.5rem;
+    border-radius: 15px;
+    margin-top: 2rem;
+    animation: slideIn 0.5s ease forwards;
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="theme-color" content="#062ffc">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="description" content="Clochanix Solar - Professional Solar Power Solutions">
+    <title>{% block title %}Clochanix Solar{% endblock %}</title>
+    
+    <!-- Modern resource hints -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" href="{{ url_for('static', filename='css/style.css') }}" as="style">
+    
+    <!-- Modern font loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400..700&display=swap" rel="stylesheet">
+    
+    <!-- Core styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    {% block base_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <header>
+        <div class="heading">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos.png') }}" 
+                     alt="Clochanix Solar Services Logo" 
+                     class="company-logo"
+                     width="180" 
+                     height="auto"
+                     loading="eager">
+            </div>
+            <div class="text-header">
+                <h1><span class="brand-text">CLOCHANIX SOLAR</span></h1>
+                <p class="tagline">POWERING YOUR WORLD WITH SOLAR ENERGY</p>
+                <div class="announcement" role="marquee">
+                    SOLAR INSTALLATIONS, MAINTENANCE, UPGRADES, AND ENERGY EFFICIENCY SOLUTIONS
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+
+    <footer class="footer mt-auto py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 col-md-6 text-md-start text-center">
+                    <h5>Resources & Policies</h5>
+                    <ul class="list-unstyled footer-links">
+                        <li><a href="{{ url_for('terms') }}">Terms of Service</a></li>
+                        <li><a href="{{ url_for('privacy') }}">Privacy Policy</a></li>
+                        <li class="mt-3"><h6>Solar Tips</h6></li>
+                        <li>• Regular panel cleaning improves efficiency</li>
+                        <li>• Monitor system performance daily</li>
+                        <li>• Keep panels free from shade</li>
+                        <li>• Schedule annual maintenance</li>
+                    </ul>
+                </div>
+
+                <div class="col-lg-4 col-md-6 text-md-start text-center">
+                    <h5>Contact Us</h5>
+                    <p>
+                        <strong>Get in Touch:</strong> For solar installations, repairs, or maintenance:
+                        <br>Phone: +237 680-547-526
+                        <br>Email: clovissamba191@gmail.com
+                        <br>Location: Limbe, Cameroon
+                    </p>
+                </div>
+
+                <div class="col-lg-4 text-md-end text-center">
+                    <h5>Connect With Us</h5>
+                    <div class="social-links">
+                        <a href="https://www.facebook.com/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/closhanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/+237680547526" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                    <p class="copyright mt-3">&copy; {{ current_year }} Clochanix Solar. All rights reserved.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Modern script loading -->
+    <script type="module" src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block extra_js %}{% endblock %}
+    
+    <!-- PWA support -->
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/sw.js').then(registration => {
+                console.log('ServiceWorker registration successful');
+            }).catch(err => {
+                console.error('ServiceWorker registration failed:', err);
+            });
+        }
+    </script>
+</body>
+</html>

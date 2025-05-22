@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Terms and Services - Clochanix Solar{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/solar.css') }}">
+<link rel="stylesheet" href="{{ url_for('static', filename='css/terms.css') }}">
+
+<div class="terms-container">
+    <h1>Terms and Services</h1>
+    
+    <div class="terms-header">
+        <p class="terms-intro">Last Updated: {{ current_date }}</p>
+        <div class="terms-highlight">
+            <i class="fas fa-shield-alt"></i>
+            <p>Our commitment to quality, safety, and professional solar services</p>
+        </div>
+    </div>
+
+    <section class="terms-section">
+        <h2>1. Service Agreement</h2>
+        <p>By engaging our services, you agree to the following terms and conditions:</p>
+        <ul>
+            <li>All solar installations will be performed by qualified technicians</li>
+            <li>Services will be provided in accordance with solar energy standards</li>
+            <li>Safety protocols and regulations will be strictly followed</li>
+            <li>Service quotes are valid for 30 days from issuance</li>
+        </ul>
+    </section>
+
+    <section class="terms-section">
+        <h2>2. Installation and Maintenance</h2>
+        <ul>
+            <li>Regular maintenance schedules will be established</li>
+            <li>System performance monitoring services provided</li>
+            <li>Warranty coverage for installed components</li>
+            <li>Emergency support available when needed</li>
+        </ul>
+    </section>
+
+    <section class="terms-section contact-info">
+        <h2>Contact Information</h2>
+        <p>For questions about these terms or our services:</p>
+        <ul>
+            <li>Phone: +237 680-547-526</li>
+            <li>Email: clovissamba191@gmail.com</li>
+            <li>Address: Limbe, Cameroon</li>
+        </ul>
+    </section>
+
+    <div class="terms-footer">
+        <p>Last updated: {{ current_date }}</p>
+        <p>These terms and conditions are subject to change without notice.</p>
+    </div>
+</div>
+{% endblock %}

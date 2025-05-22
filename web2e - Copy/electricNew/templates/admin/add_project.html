@@ -1,0 +1,373 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Add New Project{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+{% endblock %}
+
+{% block admin_content %}
+<div class="project-container">
+    <div class="admin-header">
+        <h1>Add New Project</h1>
+        <a href="{{ url_for('admin_projects') }}" class="btn-back">Back to Projects</a>
+    </div>
+
+    <form class="project-form" method="POST" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="project_type">Project Type</label>
+            <select id="project_type" name="project_type" required onchange="loadProjectTemplate(this.value)">
+                <option value="">Select Project Type</option>
+                <option value="wiring">Electrical Wiring (Project 1)</option>
+                <option value="lighting">Lighting Installation (Project 2)</option>
+                <option value="solar">Solar Panel Installation (Project 3)</option>
+                <option value="panel">Panel Upgrades (Project 4)</option>
+                <option value="maintenance">Lighting Maintenance (Project 5)</option>
+                <option value="industrial">Industrial Systems (Project 6)</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label for="installation_number">Installation Number</label>
+            <input type="number" id="installation_number" name="installation_number" required>
+        </div>
+
+        <div class="project-specs-form">
+            <h3>Project Overview</h3>
+            <div class="form-group">
+                <label for="description">Project Description</label>
+                <textarea id="description" name="description" rows="4" required 
+                    placeholder="Comprehensive description of the project including conduit installation, circuit planning, and safety implementations..."
+                    class="form-control"></textarea>
+            </div>
+
+            <div class="project-location-form">
+                <h3>Project Location Details</h3>
+                <div class="form-group">
+                    <label for="project_city">City</label>
+                    <input type="text" id="project_city" name="project_city" value="Limbe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="project_country">Country</label>
+                    <input type="text" id="project_country" name="project_country" value="Cameroon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="specific_location">Specific Location</label>
+                    <input type="text" id="specific_location" name="specific_location" 
+                           placeholder="e.g., BATOKE, Mile 4" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="completion_year">Expected Completion Year</label>
+                    <input type="number" id="completion_year" name="completion_year" 
+                           min="2024" max="2030" value="2024" required>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="client_name">Client Name</label>
+                <input type="text" id="client_name" name="client_name" required>
+            </div>
+
+            <div class="form-group">
+                <label for="property_size">Property Size (sq meters)</label>
+                <input type="number" id="property_size" name="property_size" required>
+            </div>
+
+            <div class="form-group">
+                <label for="location">Location</label>
+                <input type="text" id="location" name="location" required placeholder="e.g., BATOKE, Limbe">
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Project Duration (days)</label>
+                <input type="number" id="duration" name="duration" required>
+            </div>
+
+            <div class="form-group">
+                <label for="team_size">Team Size</label>
+                <input type="number" id="team_size" name="team_size" required>
+            </div>
+
+            <div class="form-group">
+                <label for="completion_date">Completion Date</label>
+                <input type="date" id="completion_date" name="completion_date" required>
+            </div>
+
+            <div class="project-location-form">
+                <h3>Project Location Details</h3>
+                <div class="form-group">
+                    <label for="project_city">City</label>
+                    <input type="text" id="project_city" name="project_city" value="Limbe" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="project_country">Country</label>
+                    <input type="text" id="project_country" name="project_country" value="Cameroon" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="specific_location">Specific Location</label>
+                    <input type="text" id="specific_location" name="specific_location" 
+                           placeholder="e.g., BATOKE, Mile 4" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="completion_year">Expected Completion Year</label>
+                    <input type="number" id="completion_year" name="completion_year" 
+                           min="2024" max="2030" value="2024" required>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Technical Scope</label>
+            <div id="technical-scope-checkboxes" class="checkbox-group">
+                <!-- Checkboxes will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label>Equipment Used</label>
+            <div id="equipment-checkboxes" class="checkbox-group">
+                <!-- Checkboxes will be dynamically added here -->
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label for="technical_scope">Technical Scope</label>
+            <textarea id="technical_scope" name="technical_scope" rows="4" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <label>Project Images (Before, During, After)</label>
+            <input type="file" name="images[]" accept="image/*" multiple required>
+            <div class="image-preview" id="imagePreview"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Project Videos</label>
+            <input type="file" name="videos[]" accept="video/*" multiple>
+            <div class="video-preview" id="videoPreview"></div>
+        </div>
+
+        <button type="submit" class="btn-submit">Add Project</button>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{% block admin_js %}
+<script>
+const projectTemplates = {
+    wiring: {
+        title: "Electrical Wiring Installation",
+        scope: [
+            "Complete house wiring",
+            "Circuit breaker installation",
+            "Conduit pipe fitting",
+            "Junction box placement",
+            "Safety system integration",
+            "Ground system installation",
+            "Power point installation",
+            "Distribution board setup"
+        ],
+        equipment: [
+            "Professional wiring tools",
+            "Electrical testing equipment",
+            "Conduit bending machines",
+            "Safety gear and meters",
+            "Cable routing systems",
+            "Circuit testers",
+            "Wire strippers",
+            "Voltage detectors"
+        ]
+    },
+    lighting: {
+        title: "Lighting Installation Project",
+        scope: [
+            "LED lighting installation",
+            "Smart control systems",
+            "Motion sensors setup",
+            "Dimming capabilities",
+            "Energy monitoring",
+            "Emergency lighting",
+            "Decorative lighting",
+            "Outdoor lighting"
+        ],
+        equipment: [
+            "LED fixtures and panels",
+            "Smart controllers",
+            "Testing equipment",
+            "Installation tools",
+            "Safety equipment",
+            "Light meters",
+            "Programming devices",
+            "Mounting hardware"
+        ]
+    },
+    solar: {
+        title: "Solar Panel Installation",
+        scope: [
+            "Solar panel mounting",
+            "Inverter installation",
+            "Battery system setup",
+            "Grid connection",
+            "System monitoring",
+            "Charge controller setup",
+            "Energy storage configuration",
+            "Performance testing"
+        ],
+        equipment: [
+            "Solar panels",
+            "Inverters",
+            "Mounting systems",
+            "Battery banks",
+            "Testing equipment",
+            "Power meters",
+            "Safety harnesses",
+            "Specialized tools"
+        ]
+    },
+    panel: {
+        title: "Panel Upgrades",
+        scope: [
+            "Main panel replacement",
+            "Circuit breaker upgrade",
+            "Load calculation",
+            "Safety system implementation",
+            "Ground system update",
+            "Surge protection",
+            "Code compliance check",
+            "System testing"
+        ],
+        equipment: [
+            "Panel boxes",
+            "Circuit breakers",
+            "Testing devices",
+            "Safety equipment",
+            "Power tools",
+            "Metering equipment",
+            "Labels and markers",
+            "Documentation tools"
+        ]
+    },
+    maintenance: {
+        title: "Lighting Maintenance",
+        scope: [
+            "Fixture inspection",
+            "Bulb replacement",
+            "Wiring check",
+            "Control system testing",
+            "Emergency light testing",
+            "Energy efficiency audit",
+            "Safety compliance check",
+            "Documentation"
+        ],
+        equipment: [
+            "Light meters",
+            "Replacement parts",
+            "Testing equipment",
+            "Safety gear",
+            "Cleaning supplies",
+            "Access equipment",
+            "Documentation tools",
+            "Diagnostic devices"
+        ]
+    },
+    industrial: {
+        title: "Industrial Systems",
+        scope: [
+            "Power distribution setup",
+            "Machine installation",
+            "Control system implementation",
+            "Safety system integration",
+            "Network setup",
+            "Automation programming",
+            "Testing and certification",
+            "Staff training"
+        ],
+        equipment: [
+            "Industrial tools",
+            "Power analyzers",
+            "Control panels",
+            "Safety equipment",
+            "Network testers",
+            "Programming devices",
+            "Heavy machinery",
+            "Documentation systems"
+        ]
+    }
+};
+
+function loadProjectTemplate(type) {
+    if (!type) return;
+    const template = projectTemplates[type];
+    
+    // Update technical scope checkboxes
+    const scopeContainer = document.getElementById('technical-scope-checkboxes');
+    scopeContainer.innerHTML = template.scope.map(item => `
+        <div class="checkbox-item">
+            <input type="checkbox" name="scope[]" value="${item}" id="scope-${item.replace(/\s+/g, '-')}">
+            <label for="scope-${item.replace(/\s+/g, '-')}">${item}</label>
+        </div>
+    `).join('');
+
+    // Update equipment checkboxes
+    const equipmentContainer = document.getElementById('equipment-checkboxes');
+    equipmentContainer.innerHTML = template.equipment.map(item => `
+        <div class="checkbox-item">
+            <input type="checkbox" name="equipment[]" value="${item}" id="equipment-${item.replace(/\s+/g, '-')}">
+            <label for="equipment-${item.replace(/\s+/g, '-')}">${item}</label>
+        </div>
+    `).join('');
+}
+
+// Image preview handler
+document.querySelector('input[name="images[]"]').addEventListener('change', function(e) {
+    const preview = document.getElementById('imagePreview');
+    preview.innerHTML = '';
+    [...this.files].forEach(file => {
+        if (file.type.startsWith('image/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const img = document.createElement('img');
+                img.src = e.target.result;
+                img.className = 'preview-image';
+                preview.appendChild(img);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+// Video preview handler
+document.querySelector('input[name="videos[]"]').addEventListener('change', function(e) {
+    const preview = document.getElementById('videoPreview');
+    preview.innerHTML = '';
+    [...this.files].forEach(file => {
+        if (file.type.startsWith('video/')) {
+            const reader = new FileReader();
+            reader.onload = function(e) {
+                const video = document.createElement('video');
+                video.src = e.target.result;
+                video.controls = true;
+                video.className = 'preview-video';
+                preview.appendChild(video);
+            }
+            reader.readAsDataURL(file);
+        }
+    });
+});
+
+// Create upload directories if they don't exist
+for (dir_name in ['images', 'videos']) {
+    upload_path = os.path.join(app.config['UPLOAD_FOLDER'], dir_name)
+    os.makedirs(upload_path, exist_ok=True)
+}
+</script>
+{% endblock %}
+{% endblock %}

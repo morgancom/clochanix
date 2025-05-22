@@ -1,0 +1,123 @@
+{% extends "base.html" %}
+{% block title %}CLOCHANIX ELECTRIC SERVICES{% endblock %}
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/projects.css') }}">
+<style>
+
+    header {
+        background-image: url('static/images/A1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>Our Projects</h1>
+        <p>Explore some of our recent electrical projects</p>
+    </div>
+</section>
+
+<section class="projects-container">
+    <div class="container">
+        
+        
+        <div class="project-card">
+            <h2>Electrical Wirings</h2>
+            <p><strong>Description:</strong>We provide comprehensive electrical wiring services for residential, commercial, and industrial properties. From new 
+                construction wiring to rewiring existing structures, we ensure safe and reliable electrical systems.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/ElectricalWiring3.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/ElectricalWiring2.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/ElectricalWiring1.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project1') }}" class="more-button">More</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Lighting Installations</h2>
+            <p><strong>Description:</strong>From recessed lighting to outdoor landscape lighting, we install a variety of lighting fixtures to 
+                enhance the ambiance and functionality of your space. We also offer energy-efficient LED lighting solutions.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/LightingInstallation4.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/LightingInstallation2.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/LightingInstallation3.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project2') }}" class="more-button">More</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Solar Panel Installations</h2>
+            <p><strong>Description:</strong> We offer electrical solar panel installation to power your home
+                 during power outages, ensuring your home or business has the necessary power capacity at all times.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/solarpanelinstallation.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/solar4.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/solar3.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project3') }}" class="more-button">More</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Panel Upgrades</h2>
+        <p><strong>Description:</strong>Is your electrical panel outdated or insufficient? We offer panel upgrades and 
+            replacements to ensure your home or business has the necessary power capacity and safety features.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/SolarPanelUpgrades.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/solar3.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/2.jpg') }}" alt="Earth Rod Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/earthW3.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project4') }}" class="more-button">More</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Lighting Maintenances</h2>
+            <p><strong>Description:</strong> We provide maintenance for various lighting 
+                systems, ensuring they function efficiently and safely. We also offer energy-efficient LED lighting solutions.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/ElectricalMaintenance&Repair.jpg') }}" alt="Conduit Pipe Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/pipeunc.jpg') }}">
+                <img src="{{ url_for('static', filename='images/LightingMaintenance2.jpg') }}" alt="Conduit Pipe Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/pipeunc1.jpg') }}">
+                <img src="{{ url_for('static', filename='images/LightingMaintenance1.jpg') }}" alt="Conduit Pipe Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/pipeunc1.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project5') }}" class="more-button">More</a>
+        </div>
+
+        <div class="project-card">
+            <h2>Industrial Wirings</h2>
+            <p><strong>Description:</strong> We provide advanced industrial wiring solutions,
+                 ensuring robustness and safety for complex industrial electrical systems.</p>
+            <div class="gallery">
+                <img src="{{ url_for('static', filename='images/A1.jpg') }}" alt="Solar Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/solar3.jpg') }}">
+                <img src="{{ url_for('static', filename='images/industrialinstallation.jpg') }}" alt="Solar Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/2.jpg') }}">
+                <img src="{{ url_for('static', filename='images/IndustrialWiring1.jpg') }}" alt="Solar Installation" class="gallery-image" data-modal-image="{{ url_for('static', filename='images/2.jpg') }}">
+            </div>
+            <p>Click to view more on the project</p>
+            <a href="{{ url_for('project6') }}" class="more-button">More</a>
+        </div>
+    </div>
+</section>
+
+<!-- Modal structure -->
+<div id="image-modal" class="modal">
+    <span class="close">&times;</span>
+    <div class="modal-content">
+        <img id="modal-image" class="modal-image">
+        <div id="image-caption" class="caption"></div>
+        <button class="nav-btn prev" aria-label="Previous image">&#10094;</button>
+        <button class="nav-btn next" aria-label="Next image">&#10095;</button>
+    </div>
+</div>
+
+
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/projects.js') }}"></script>
+{% endblock %}

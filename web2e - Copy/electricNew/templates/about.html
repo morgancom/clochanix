@@ -1,0 +1,221 @@
+{% extends "base.html" %}
+
+{% block title %}About Us - Electrical Services{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/aboutstyle.css') }}">
+<style>
+    :root {
+        --primary-color: #003366;
+        --secondary-color: #FF6600;
+        --accent-color: #00CC99;
+        --text-color: #333333;
+    }
+    header {
+        background-image: url('static/images/A1.jpg');
+        background-size: cover;
+        background-position: center;
+        background-attachment: fixed;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<section class="hero">
+    <div class="container">
+        <h1>About Us</h1>
+        <p>Learn more about our electrical services company</p>
+    </div>
+</section>
+
+<section class="about-company">
+    <div class="container">
+        <h2>Our Company</h2>
+        
+            <div class="company-text">
+                <p>We are a leading electrical company dedicated to providing high-quality electrical services to residential, commercial, and industrial clients. With years of experience and a team of skilled electricians, we are committed to delivering safe, reliable, and cost-effective solutions.</p>
+                <p>Our mission is to exceed our clients' expectations by providing exceptional service, using the latest technology, and adhering to the highest industry standards. We believe in building long-term relationships with our clients based on trust, integrity, and mutual respect.</p>
+            </div>
+            
+        </div>
+    </div>
+</section>
+
+<section class="our-values">
+    <div class="container">
+        <h2>Our Values</h2>
+        <div class="values-grid">
+            <div class="value-item">
+                <h3><i class="fas fa-shield-alt"></i> Safety</h3>
+                <p>We prioritize safety in all our operations, ensuring the well-being of our employees and clients.</p>
+            </div>
+            <div class="value-item">
+                <h3><i class="fas fa-check-circle"></i> Quality</h3>
+                <p>We are committed to delivering high-quality workmanship and using top-quality materials.</p>
+            </div>
+            <div class="value-item">
+                <h3><i class="fas fa-handshake"></i> Integrity</h3>
+                <p>We conduct our business with honesty, transparency, and ethical practices.</p>
+            </div>
+            <div class="value-item">
+                <h3><i class="fas fa-smile"></i> Customer Satisfaction</h3>
+                <p>We strive to exceed our clients' expectations and build long-term relationships.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="our-team">
+    <div class="container">
+        <h2>Our Team</h2>
+        <div class="profiles">
+            <!-- Profile 1 -->
+            <div class="profile-card">
+                <div class="profile-img-container">
+                    <img src="{{ url_for('static', filename='images/clovis12.jpg') }}" alt="Clovis Samba" class="profile-img">
+                    <span class="badge">Project Lead</span>
+                </div>
+                <div class="name-title">
+                    <h2 class="name">MR. Clovis</h2>
+                    <p class="title">Project Manager</p>
+                </div>
+                <div class="certifications">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <i class="fas fa-certificate cert-icon"></i>
+                </div>
+                <div class="contact-info">
+                    <a href="https://wa.me/+237680547526" class="contact-item" target="_blank">
+                        <i class="fab fa-whatsapp contact-icon"></i>
+                        <span class="contact-label">WhatsApp:</span>
+                        <span class="contact-value">+237 680-547-526</span>
+                    </a>
+                    <a href="mailto:clovissamba191@gmail.com" class="contact-item">
+                        <i class="far fa-envelope contact-icon"></i>
+                        <span class="contact-label">Email:</span>
+                        <span class="contact-value">clovissamba191@gmail.com</span>
+                    </a>
+                    <a href="tel:+237680547526" class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span class="contact-label">Call:</span>
+                        <span class="contact-value">+237 680-547-526</span>
+                    </a>
+                </div>
+                <div class="about">
+                    <h3>About MR. Clovis</h3>
+                    <p>Mr clovis brings over 6 years of experience managing complex electrical projects. He specializes in budget optimization, timeline management, and large-scale commercial installations. Holds certifications in project management and electrical systems.</p>
+                </div>
+                <a href="{{ url_for('projects') }}" class="cta-button">View Projects</a>
+            </div>
+
+            <!-- Profile 2 -->
+            <div class="profile-card">
+                <div class="profile-img-container">
+                    <img src="{{ url_for('static', filename='images/chansle1.jpg') }}" alt="Nkengafac Chansel" class="profile-img">
+                    <span class="badge">24/7 Support</span>
+                </div>
+                <div class="name-title">
+                    <h2 class="name">MR. Chansel</h2>
+                    <p class="title">Senior Electrician</p>
+                </div>
+                <div class="certifications">
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <i class="fas fa-certificate cert-icon"></i>
+                    <i class="fas fa-certificate cert-icon"></i>
+                </div>
+                <div class="contact-info">
+                    <a href="https://wa.me/+237671521446" class="contact-item" target="_blank">
+                        <i class="fab fa-whatsapp contact-icon"></i>
+                        <span class="contact-label">WhatsApp:</span>
+                        <span class="contact-value">+237 671-521-446</span>
+                    </a>
+                    <a href="mailto:nkengafacchansel@gmail.com" class="contact-item">
+                        <i class="far fa-envelope contact-icon"></i>
+                        <span class="contact-label">Email:</span>
+                        <span class="contact-value">nkengafacchansel@gmail.com</span>
+                    </a>
+                    <a href="tel:+237671521446" class="contact-item">
+                        <i class="fas fa-phone contact-icon"></i>
+                        <span class="contact-label">Call:</span>
+                        <span class="contact-value">+237 671-521-446</span>
+                    </a>
+                </div>
+                <div class="about">
+                    <h3>About MR. Chansel</h3>
+                    <p>With over 4 years of experience in residential and commercial electrical installations. Chansel specializes in smart home systems, energy-efficient solutions, and emergency electrical services. He holds certifications in electrical safety and renewable energy systems.</p>
+                </div>
+                <a href="{{ url_for('home', _anchor='service-request-section') }}" class="cta-button">Schedule Service</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="company-history">
+    <div class="container">
+        <h2>Our History</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-date">2023</div>
+                <div class="timeline-content">
+                    <h3>Company Founded</h3>
+                    <p>We started as a small electrical contracting business with a focus on quality and
+                         customer satisfaction. Back then mostly handling electrical faults solutions.👷‍♂️</p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-content">
+                    <h3>Expansion</h3>
+                    <p>We expanded our services to include commercial and industrial electrical solutions.
+                        Puting are goals on renewable energy-efficients with the aim of energy 24/7.👌
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2025</div>
+                <div class="timeline-content">
+                    <h3>Solar Division Launched</h3>
+                    <p>We launched our solar energy division to provide sustainable power solutions.
+                        Empowering communities with reliable energy 24/7💯.
+                    </p>
+                </div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-date">2026</div>
+                <div class="timeline-content">
+                    <h3>Industry Recognition</h3>
+                    <p>We received industry awards for excellence in electrical contracting and sustainability from are
+                         customers</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section class="certifications">
+    <div class="container">
+        <h2>Certifications & Accreditations</h2>
+        <div class="certifications-grid">
+            <div class="certification-item">
+                <img src="{{ url_for('static', filename='images/cert1.jpg') }}" alt="Certification 1" class="certification-image">
+                <h3>TVE Certification</h3>
+                <p>Technician and Vocational Educations Certificate</p>
+            </div>
+            <div class="certification-item">
+                <img src="{{ url_for('static', filename='images/cert2.jpg') }}" alt="Certification 2" class="certification-image">
+                <h3>'AVTC' Advanced Vocational Training Center</h3>
+                <p>specialized Technician Diploma</p>
+            </div>
+            <div class="certification-item">
+                <img src="{{ url_for('static', filename='images/cert3.jpg') }}" alt="Certification 3" class="certification-image">
+                <h3>IEEE Membership</h3>
+                <p>Institute of Electrical and Electronics Engineers</p>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{{ url_for('static', filename='js/about.js') }}"></script>
+{% endblock %}

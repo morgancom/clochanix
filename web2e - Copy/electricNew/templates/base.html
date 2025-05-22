@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Clochanix Electric{% endblock %}</title>
+    
+    <!-- Common CSS -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fontawesome.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/all.min.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/Gstyle.css') }}">    
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.min.css') }}">
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v6.0.0-beta3/css/all.css">
+
+    {% block base_css %}{% endblock %}
+    {% block extra_css %}{% endblock %}
+</head>
+<style>
+    body {
+        background-size: contain;
+        background-image: url('static/images/background4.jpg');
+        background-size: cover;
+        background-position: center;
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+        font-family: 'Inter', sans-serif;
+        text-align: center;
+    }
+    header {
+        text-align: center;
+        background-size: contain;
+        background-image: url('static/images/A1.jpg');
+        background-size: cover;
+        background-position: center;
+    }
+    main {
+        flex: 1;
+    }
+    /* Footer styling */
+    .footer {
+        background-color: rgba(0, 0, 0, 0.85);
+        color: #e9ecef;
+        flex-shrink: 0;
+    }
+    .footer h5 { /* Style for small headings in footer */
+        color: #ffffff;
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+    }
+    .footer p {
+         font-size: 0.95em;
+         color: #ced4da; /* Dimmer text color for paragraphs */
+         margin-bottom: 0.5rem;
+    }
+    /* Footer Navigation Links */
+    .footer-nav .list-inline-item {
+        margin-right: 10px;
+    }
+    .footer-nav .list-inline-item:last-child {
+        margin-right: 0;
+    }
+    .footer-nav a {
+        color: #ced4da;
+        text-decoration: none;
+        padding: 2px 4px; /* Smaller padding */
+        transition: color 0.3s ease;
+         font-size: 0.95em;
+    }
+    .footer-nav a:hover {
+        color: #ffffff;
+        text-decoration: underline;
+    }
+    /* Social Media Links */
+    .footer .social-links {
+        margin-bottom: 10px; /* Space below social links */
+    }
+    .footer .social-link i {
+        color: #adb5bd;
+        margin: 0 10px; /* Adjusted spacing */
+        font-size: 1.5rem; /* Slightly smaller */
+        transition: color 0.3s ease;
+    }
+    .footer .social-link:hover i {
+        color: #062ffc;
+    }
+    /* Copyright Text */
+    .footer .copyright {
+        color: #6c757d;
+        font-size: 0.85em; /* Smaller copyright text */
+        margin-top: 10px; /* Space above copyright */
+    }
+    /* Ensure columns have some bottom margin on smaller screens when they stack */
+    .footer .row > div {
+        margin-bottom: 1rem;
+    }
+     @media (min-width: 768px) { /* On medium screens and up */
+        .footer .row > div {
+            margin-bottom: 0; /* Remove bottom margin when side-by-side */
+        }
+     }
+    .logo-container {
+        position: absolute;
+        right: 30px;
+        top: 20px;
+        z-index: 100;
+        padding: 0;
+        width: 200px; /* Increased container width */
+    }
+
+    .company-logo {
+        max-width: 180px; /* Increased from 120px */
+        width: 100%;
+        height: auto;
+        border-radius: 12px;
+        mix-blend-mode: multiply; /* This helps remove white background */
+        filter: drop-shadow(0 3px 6px rgba(0,0,0,0.3));
+        transition: transform 0.3s ease;
+    }
+
+    .company-logo:hover {
+        transform: scale(1.05); /* Slight zoom on hover */
+    }
+
+    /* Update heading layout */
+    .heading {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 2rem;
+        padding-right: 220px; /* Increased space for larger logo */
+    }
+
+    .text-header {
+        width: 100%;
+        text-align: left;
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+        .logo-container {
+            position: relative;
+            right: auto;
+            top: auto;
+            margin-bottom: 1.5rem;
+            width: 160px; /* Slightly smaller on mobile */
+        }
+
+        .company-logo {
+            max-width: 140px; /* Adjusted for mobile */
+        }
+
+        .heading {
+            padding-right: 2rem;
+            align-items: center;
+        }
+
+        .text-header {
+            text-align: center;
+        }
+    }
+</style>
+<body>
+    <header>
+        <div class="heading">
+            <div class="logo-container">
+                <img src="{{ url_for('static', filename='images/logos.png') }}" alt="Clochanix Electric Services Logo" class="company-logo">
+            </div>
+            <div class="text-header">
+                <h1><strong style="color: #062ffc;">CLOCHANIX ELECTRIC SERVICES</strong></h1>
+                <p style="color:#f30505f8;font-size:20px;"><b>WE ARE HAPPY TO LIGHT YOUR HOME</b></p>
+                <marquee style="color: gold;" behavior="scroll" direction="left">WE DO PROVIDE ELECTRICAL SERVICE THAT IS : Electrical Maintenance, 
+                    Commercial Installations, Solar Installations, Panel_Upgrade, industrial Wiring.</marquee>
+            </div>
+        </div>
+        <button class="mobile-menu-btn" aria-label="Toggle menu">
+            <i class="fas fa-bars-staggered"></i>
+        </button>
+
+        <nav>
+            <ul>
+                <li>
+                    <a href="{{ url_for('home') }}" class="nav-link">
+                        <i class="fas fa-home-lg-alt"></i>
+                        <span>Home</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('about') }}" class="nav-link">
+                        <i class="fas fa-info-circle"></i>
+                        <span>About</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('services') }}" class="nav-link">
+                        <i class="fas fa-bolt"></i>
+                        <span>Services</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('projects') }}" class="nav-link">
+                        <i class="fas fa-hard-hat"></i>
+                        <span>Projects</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{ url_for('contact') }}" class="nav-link">
+                        <i class="fas fa-headset"></i>
+                        <span>Contact</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+
+    </main>
+
+    <footer class="footer mt-auto py-4">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-lg-3 col-md-4 text-md-start text-center">
+                    <h5>Links</h5>
+                    <nav class="footer-nav">
+                        <ul class="list-inline">
+                            <li class="list-inline-item"><a href="{{ url_for('home') }}">Home</a></li>
+                            <li class="list-inline-item"><a href="{{ url_for('about') }}">About</a></li>
+                            <li class="list-inline-item"><a href="{{ url_for('services') }}">Services</a></li>
+                            <li class="list-inline-item"><a href="{{ url_for('projects') }}">Projects</a></li>
+                            <li class="list-inline-item"><a href="{{ url_for('contact') }}">Contact</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <section class="tips-section">
+    <div class="tips-container">
+        <div class="tips-header">
+            <i class="fas fa-lightbulb"></i>
+            <h2>Electrical Tips & Safety Guide</h2>
+            <p>Essential knowledge for electrical safety and efficiency</p>
+        </div>
+
+        <div class="tips-grid">
+            <div class="tip-card safety">
+                <i class="fas fa-shield-alt"></i>
+                <h3>Safety Tips</h3>
+                <ul>
+                    <li>Always turn off power before electrical work</li>
+                    <li>Use certified surge protectors</li>
+                    <li>Keep electrical panels accessible</li>
+                    <li>Never overload outlets</li>
+                </ul>
+            </div>
+
+            <div class="tip-card maintenance">
+                <i class="fas fa-tools"></i>
+                <h3>Maintenance Tips</h3>
+                <ul>
+                    <li>Regular inspection of cords and plugs</li>
+                    <li>Clean electrical fixtures regularly</li>
+                    <li>Test circuit breakers monthly</li>
+                    <li>Check for warm outlets or switches</li>
+                </ul>
+            </div>
+
+            <div class="tip-card efficiency">
+                <i class="fas fa-leaf"></i>
+                <h3>Energy Efficiency</h3>
+                <ul>
+                    <li>Switch to LED lighting</li>
+                    <li>Use smart power strips</li>
+                    <li>Install motion sensors</li>
+                    <li>Regular appliance maintenance</li>
+                </ul>
+            </div>
+        </div>
+
+
+    </div>
+</section>
+
+
+              
+
+                <div class="col-lg-4 col-md-12 text-md-end text-center">
+                    <h5>Connect With Us</h5>
+                     <div class="social-links">
+                        <a href="https://www.facebook.com/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://twitter.com/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/company/clochanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="https://www.instagram.com/closhanix" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://api.whatsapp.com/+237680547526" class="social-link" target="_blank" rel="noopener noreferrer" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+                        </div>
+                     <p class="copyright mt-3">&copy; {{ current_year }} Clochanix Electric Services. All rights reserved.</p>
+                     <script>
+                        document.addEventListener('DOMContentLoaded', (event) => {
+                            const yearSpan = document.querySelector('.copyright');
+                            if (yearSpan) {
+                                yearSpan.innerHTML = yearSpan.innerHTML.replace('{{ current_year }}', new Date().getFullYear());
+                            } });
+                    </script>
+                </div>
+
+            </div>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="preload" href="{{ url_for('static', filename='js/main.js') }}" as="script">
+    <script defer src="{{ url_for('static', filename='js/main.js') }}"></script>
+    {% block base_js %}{% endblock %}
+    {% block extra_js %}{% endblock %}
+</body>
+</html>

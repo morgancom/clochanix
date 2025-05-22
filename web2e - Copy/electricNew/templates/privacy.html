@@ -1,0 +1,158 @@
+{% extends "base.html" %}
+
+{% block title %}Privacy Policy - Clochanix Electric{% endblock %}
+
+{% block content %}
+<div class="privacy-container">
+    <h1>Privacy Policy</h1>
+    
+    <div class="privacy-header">
+        <p class="last-updated">Last Updated: {{ current_date }}</p>
+        <div class="privacy-highlight">
+            <i class="fas fa-shield-alt"></i>
+            <p>We are committed to protecting your privacy and personal data</p>
+        </div>
+    </div>
+
+    <section class="privacy-section">
+        <h2>1. Information We Collect</h2>
+        <p>We collect the following types of information:</p>
+        <ul>
+            <li>Name and contact information</li>
+            <li>Service addresses and location details</li>
+            <li>Project requirements and specifications</li>
+            <li>Payment information for services rendered</li>
+        </ul>
+    </section>
+
+    <section class="privacy-section">
+        <h2>2. How We Use Your Information</h2>
+        <ul>
+            <li>To provide and improve our electrical services</li>
+            <li>To communicate about appointments and services</li>
+            <li>To process payments and maintain accounts</li>
+            <li>To send important service notifications</li>
+            <li>To comply with legal obligations</li>
+        </ul>
+    </section>
+
+    <section class="privacy-section">
+        <h2>3. Data Protection</h2>
+        <ul>
+            <li>All personal data is stored securely</li>
+            <li>Access is restricted to authorized personnel only</li>
+            <li>Regular security assessments are conducted</li>
+            <li>Data encryption is used where appropriate</li>
+        </ul>
+    </section>
+
+    <section class="privacy-section">
+        <h2>4. Your Rights</h2>
+        <ul>
+            <li>Right to access your personal data</li>
+            <li>Right to correct inaccurate information</li>
+            <li>Right to request data deletion</li>
+            <li>Right to opt-out of marketing communications</li>
+        </ul>
+    </section>
+
+    <section class="privacy-section contact-info">
+        <h2>Contact Us</h2>
+        <p>For privacy-related inquiries:</p>
+        <ul>
+            <li>Email: clovissamba191@gmail.com</li>
+            <li>Phone: +237 680-547-526</li>
+            <li>Address: Limbe, Cameroon</li>
+        </ul>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .privacy-container {
+        max-width: 1000px;
+        margin: 4rem auto;
+        padding: 3rem;
+        background: linear-gradient(145deg, #ffffff, #f8f9fa);
+        border-radius: 20px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+
+    .privacy-header {
+        text-align: center;
+        margin-bottom: 4rem;
+    }
+
+    .privacy-highlight {
+        background: linear-gradient(135deg, #062ffc 0%, #1a1f3c 100%);
+        color: white;
+        padding: 2rem;
+        border-radius: 15px;
+        margin: 2rem 0;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        justify-content: center;
+    }
+
+    .privacy-section {
+        margin-bottom: 3rem;
+        padding: 2rem;
+        border-radius: 15px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+
+    .privacy-section h2 {
+        color: #062ffc;
+        margin-bottom: 1.5rem;
+        font-size: 1.8rem;
+    }
+
+    .privacy-section ul {
+        list-style-type: none;
+        padding-left: 0;
+    }
+
+    .privacy-section li {
+        margin-bottom: 1rem;
+        padding-left: 1.5rem;
+        position: relative;
+        line-height: 1.6;
+    }
+
+    .privacy-section li::before {
+        content: '•';
+        color: #f8c537;
+        position: absolute;
+        left: 0;
+        font-weight: bold;
+    }
+
+    .contact-info {
+        background: linear-gradient(145deg, #062ffc 0%, #1a1f3c 100%);
+        color: white;
+    }
+
+    .contact-info h2 {
+        color: #f8c537;
+    }
+
+    .last-updated {
+        color: #666;
+        font-style: italic;
+    }
+
+    @media (max-width: 768px) {
+        .privacy-container {
+            margin: 2rem 1rem;
+            padding: 1.5rem;
+        }
+
+        .privacy-section {
+            padding: 1.5rem;
+        }
+    }
+</style>
+{% endblock %}

@@ -1,0 +1,111 @@
+.large-menu-overlay {
+    position: fixed;
+    top: 0;
+    right: -300px;
+    width: 300px;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.95);
+    backdrop-filter: blur(10px);
+    z-index: 2000;
+    transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: -5px 0 25px rgba(0, 0, 0, 0.3);
+    overflow-y: auto;
+}
+
+.large-menu-overlay.active {
+    transform: translateX(-300px);
+}
+
+.large-menu-content {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 3vw, 2rem);
+    max-width: 1200px;
+    width: 90%;
+    padding: clamp(1rem, 5vw, 3rem);
+    opacity: 0;
+    transform: translateY(20px);
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.large-menu-overlay.active .large-menu-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.menu-content {
+    padding: 80px 2rem 2rem;
+}
+
+.menu-section {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 15px;
+    transition: all 0.3s ease;
+}
+
+.menu-section:last-child {
+    border-bottom: none;
+}
+
+.menu-section:hover {
+    background: rgba(255, 255, 255, 0.05);
+    transform: translateY(-5px);
+}
+
+.menu-section a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    color: white;
+    text-decoration: none;
+    font-size: clamp(1.2rem, 2.5vw, 1.5rem);
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+.menu-section a:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateX(10px);
+}
+
+.menu-section a i {
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    color: var(--accent-color);
+}
+
+.menu-section i {
+    font-size: 1.5rem;
+    color: var(--accent-color);
+    transition: transform 0.3s ease;
+}
+
+.menu-section:hover i {
+    transform: scale(1.2);
+}
+
+.close-overlay {
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    z-index: 2001;
+}
+
+.close-overlay:hover {
+    transform: rotate(90deg);
+    color: var(--accent-color);
+}
+
+@media (max-width: 768px) {
+    .large-menu-content {
+        grid-template-columns: 1fr;
+    }
+}

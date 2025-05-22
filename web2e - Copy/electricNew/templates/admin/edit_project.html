@@ -1,0 +1,192 @@
+{% extends "admin/base.html" %}
+
+{% block title %}Edit Project {% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/admin.css') }}">
+{% endblock %}
+
+{% block admin_content %}
+<div class="project-container">
+    <div class="admin-header">
+        <h1>Edit Project</h1>
+        <a href="{{ url_for('admin_projects') }}" class="btn-back">Back to Projects</a>
+    </div>
+
+    <form class="project-form" method="POST" enctype="multipart/form-data">
+        <div class="project-specs-form">
+            <h3>Basic Information</h3>
+            <div class="form-group">
+                <label for="installation_number">Installation Number</label>
+                <input type="number" id="installation_number" name="installation_number" value="{{ project.installation_number }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="client_name">Client Name</label>
+                <input type="text" id="client_name" name="client_name" value="{{ project.client_name }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description">Project Description</label>
+                <textarea id="description" name="description" rows="4" required>{{ project.description }}</textarea>
+            </div>
+        </div>
+
+        <div class="project-location-form">
+            <h3>Project Location</h3>
+            <div class="form-group">
+                <label for="project_city">City</label>
+                <input type="text" id="project_city" name="project_city" value="{{ project.location.city }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="project_country">Country</label>
+                <input type="text" id="project_country" name="project_country" value="{{ project.location.country }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="specific_location">Specific Location</label>
+                <input type="text" id="specific_location" name="specific_location" 
+                       value="{{ project.location.specific }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="completion_year">Completion Year</label>
+                <input type="number" id="completion_year" name="completion_year" 
+                       value="{{ project.location.completion_year }}" min="2024" max="2030" required>
+            </div>
+        </div>
+
+        <div class="project-details-form">
+            <h3>Project Details</h3>
+            <div class="form-group">
+                <label for="property_size">Property Size (sq meters)</label>
+                <input type="number" id="property_size" name="property_size" value="{{ project.property_size }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="duration">Duration (days)</label>
+                <input type="number" id="duration" name="duration" value="{{ project.duration }}" required>
+            </div>
+
+            <div class="form-group">
+                <label for="team_size">Team Size</label>
+                <input type="number" id="team_size" name="team_size" value="{{ project.team_size }}" required>
+            </div>
+        </div>
+
+        <div class="project-media-form">
+            <h3>Project Media</h3>
+            
+            <!-- Current Images -->
+            <div class="current-media">
+                <h4>Current Images</h4>
+                <div class="media-grid">
+                    {% for image in project.media.images %}
+                    <div class="media-item">
+                        <img src="{{ url_for('static', filename='images/projects/images/' + image) }}" 
+                             alt="Project Image">
+                        <button type="button" class="btn-remove-media" 
+                                data-type="image" 
+                                data-file="{{ image }}"
+                                onclick="removeMedia(this, 'image')">
+                            Remove
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Current Videos -->
+            <div class="current-media">
+                <h4>Current Videos</h4>
+                <div class="media-grid">
+                    {% for video in project.media.videos %}
+                    <div class="media-item">
+                        <video controls>
+                            <source src="{{ url_for('static', filename='images/projects/videos/' + video) }}" 
+                                    type="video/mp4">
+                        </video>
+                        <button type="button" class="btn-remove-media" 
+                                data-type="video" 
+                                data-file="{{ video }}"
+                                onclick="removeMedia(this, 'video')">
+                            Remove
+                        </button>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+
+            <!-- Add New Media -->
+            <div class="add-media">
+                <h4>Add New Media</h4>
+                <div class="form-group">
+                    <label for="new_images">Add Images</label>
+                    <input type="file" id="new_images" name="images[]" 
+                           accept="image/*" multiple>
+                    <small>Accepted formats: .jpg, .jpeg, .png, .gif</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="new_videos">Add Videos</label>
+                    <input type="file" id="new_videos" name="videos[]" 
+                           accept="video/*" multiple>
+                    <small>Accepted formats: .mp4, .webm, .mov</small>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-actions">
+            <button type="submit" class="btn-submit">Update Project</button>
+            <button type="button" class="btn-cancel" onclick="history.back()">Cancel</button>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+{{ super() }}
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    // Form validation
+    const form = document.querySelector('.project-form');
+    form.addEventListener('submit', function(e) {
+        if (!confirm('Are you sure you want to save these changes?')) {
+            e.preventDefault();
+        }
+    });
+});
+
+function removeMedia(button, type) {
+    if (confirm('Are you sure you want to remove this ' + type + '?')) {
+        const mediaItem = button.closest('.media-item');
+        const filename = button.dataset.file;
+        
+        fetch(`/admin/project/{{ project_key }}/{{ project.id }}/media/delete`, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                type: type,
+                filename: filename
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                mediaItem.remove();
+                showNotification('Media removed successfully', 'success');
+            } else {
+                showNotification('Error removing media', 'error');
+            }
+        })
+        .catch(error => {
+            console.error('Error:', error);
+            showNotification('Error removing media', 'error');
+        });
+    }
+}
+</script>
+{% endblock %}

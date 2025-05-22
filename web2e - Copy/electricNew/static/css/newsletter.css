@@ -1,0 +1,113 @@
+.newsletter-container {
+    background: linear-gradient(135deg, #062ffc 0%, #1a1f3c 100%);
+    padding: 3rem 1rem;
+    margin: 4rem 0;
+    border-radius: 20px;
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+
+.newsletter-content {
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+    color: white;
+}
+
+.newsletter-header {
+    margin-bottom: 1.5rem;
+}
+
+.newsletter-header i {
+    font-size: 2.5rem;
+    color: #f8c537;
+    margin-bottom: 1rem;
+    animation: pulse 2s infinite;
+}
+
+.newsletter-header h3 {
+    font-size: 1.8rem;
+    margin: 0.5rem 0;
+}
+
+.newsletter-form {
+    margin-top: 2rem;
+}
+
+.input-group {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.input-group input {
+    flex: 1;
+    padding: 1rem;
+    border: 2px solid rgba(255,255,255,0.1);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.1);
+    color: white;
+    font-size: 1rem;
+}
+
+.input-group input::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.input-group button {
+    padding: 0 1.5rem;
+    background: #f8c537;
+    border: none;
+    border-radius: 8px;
+    color: #1a1f3c;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.input-group button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(248,197,55,0.3);
+}
+
+.newsletter-options {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-top: 1rem;
+}
+
+.newsletter-options label {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+}
+
+.newsletter-success {
+    background: rgba(40,167,69,0.9);
+    color: white;
+    padding: 1rem;
+    border-radius: 8px;
+    margin-top: 1rem;
+    display: none;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.1); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .input-group {
+        flex-direction: column;
+    }
+    
+    .newsletter-options {
+        flex-direction: column;
+        gap: 1rem;
+    }
+}

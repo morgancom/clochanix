@@ -1,0 +1,207 @@
+{% extends "base.html" %}
+
+{% block title %}Bill Calculation Results - Clochanix{% endblock %}
+
+{% block content %}
+<div class="calculator-container">
+    <div class="card">
+        <div class="card-header">
+            <h3 class="mb-0">Electricity Bill Calculation Results</h3>
+        </div>
+        <div class="card-body p-4">
+            <div class="result-items">
+            <div class="result-item animate-in"></div>
+                <span class="result-label"><i class="fas fa-history me-2"></i>Previous Reading:</span>
+                <span class="result-value">{{ previous_reading }} units</span>
+            </div>
+            <div class="result-item animate-in">
+                <span class="result-label"><i class="fas fa-tachometer-alt me-2"></i>Current Reading:</span>
+                <span class="result-value">{{ current_reading }} units</span>
+            </div>
+            <div class="result-item animate-in">
+                <span class="result-label"><i class="fas fa-tag me-2"></i>Cost per Unit:</span>
+                <span class="result-value">{{ cost_per_unit }} currency units</span>
+            </div>
+            <div class="result-item animate-in highlight-box">
+                <span class="result-label"><i class="fas fa-bolt me-2"></i>Units Consumed:</span>
+                <span class="result-value accent">{{ units_consumed }} units</span>
+            </div>
+            <div class="result-item total-amount animate-in"></div>
+                <span class="result-label"><i class="fas fa-money-bill-wave me-2"></i>Total Amount:</span>
+                <span class="result-value gradient-text">{{ total_amount }} France</span>
+            </div>
+            </div>
+            <div class="d-grid gap-3 mt-4">
+            <a href="{{ url_for('download_pdf') }}" class="btn btn-download ripple">
+                <i class="fas fa-file-pdf me-2"></i>Download PDF
+            </a>
+            <a href="{{ url_for('bill_calculator') }}" class="btn btn-new-calc ripple">
+                <i class="fas fa-calculator me-2"></i>New Calculation
+            </a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_css %}
+<style>
+    .calculator-container {
+        max-width: 600px;
+        margin: 2rem auto;
+        padding: 20px;
+    }
+    
+    .card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border: none;
+        border-radius: 15px;
+        background: rgba(255, 255, 255, 0.95);
+    }
+    
+    .card-header {
+        background: linear-gradient(135deg, #062ffc 0%, #1a1f3c 100%);
+        color: white;
+        border-radius: 15px 15px 0 0 !important;
+        padding: 1.5rem;
+    }
+
+    body {
+        background-color: #f8f9fa;
+        min-height: 100vh;
+    }
+    .container {
+        max-width: 100%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+    @media (min-width: 768px) {
+        .container {
+            max-width: 600px;
+            margin-top: 40px;
+        }
+    }
+    .card {
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        border: none;
+        border-radius: 15px;
+    }
+    .card-header {
+        background: linear-gradient(135deg, #28a745, #218838);
+        color: white;
+        border-radius: 15px 15px 0 0 !important;
+        padding: 1.5rem;
+    }
+    .result-item {
+        padding: 1rem;
+        border-bottom: 1px solid #dee2e6;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+    }
+    .result-item:last-child {
+        border-bottom: none;
+    }
+    .result-label {
+        font-weight: 600;
+        color: #495057;
+    }
+    .result-value {
+        color: #28a745;
+        font-weight: 500;
+    }
+    .total-amount {
+        background-color: #f8f9fa;
+        font-size: 1.2rem;
+    }
+    .btn {
+        padding: 0.75rem 1.5rem;
+        border-radius: 10px;
+        transition: transform 0.2s;
+    }
+    .btn:hover {
+        transform: translateY(-2px);
+    }
+    @media (max-width: 576px) {
+        .result-item {
+            flex-direction: column;
+            align-items: flex-start;
+        }
+        .result-value {
+            margin-top: 0.5rem;
+        }
+    }
+    .btn-download, .btn-new-calc {
+        width: 100%;
+        padding: 1rem;
+        font-size: 1.1rem;
+        font-weight: 600;
+        border-radius: 12px;
+        transition: all 0.3s ease;
+        position: relative;
+        overflow: hidden;
+        border: none;
+    }
+
+    .btn-download {
+        background: linear-gradient(135deg, #062ffc 0%, #1a1f3c 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(6, 47, 252, 0.2);
+    }
+
+    .btn-new-calc {
+        background: linear-gradient(135deg, #28a745 0%, #218838 100%);
+        color: white;
+        box-shadow: 0 4px 15px rgba(40, 167, 69, 0.2);
+    }
+
+    .btn-download:hover, .btn-new-calc:hover {
+        transform: translateY(-3px);
+        color: white;
+    }
+
+    .btn-download:hover {
+        box-shadow: 0 6px 20px rgba(6, 47, 252, 0.3);
+    }
+
+    .btn-new-calc:hover {
+        box-shadow: 0 6px 20px rgba(40, 167, 69, 0.3);
+    }
+
+    .btn-download:active, .btn-new-calc:active {
+        transform: translateY(-1px);
+    }
+
+    .btn-download i, .btn-new-calc i {
+        font-size: 1.2rem;
+        vertical-align: middle;
+    }
+
+    @media (min-width: 768px) {
+        .d-grid {
+            display: flex;
+            gap: 1rem !important;
+        }
+        
+        .btn-download, .btn-new-calc {
+            flex: 1;
+        }
+    }
+
+    @keyframes pulse {
+        0% { transform: scale(1); }
+        50% { transform: scale(1.05); }
+        100% { transform: scale(1); }
+    }
+
+    .btn-download {
+        animation: pulse 2s infinite;
+    }
+</style>
+{% endblock %}
+
+{% block extra_js %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://kit.fontawesome.com/your-kit-code.js"></script>
+{% endblock %}
